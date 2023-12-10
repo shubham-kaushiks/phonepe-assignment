@@ -1,7 +1,5 @@
 package entity;
 
-import utils.Validator;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -10,15 +8,15 @@ public class Transaction {
     private UUID senderId;
     private UUID receiverId;
     private double amount;
-    private String description;
+    private TransactionType transactionType;
     private LocalDate timestamp;
 
-    public Transaction(UUID senderId, UUID receiverId, double amount, String description, LocalDate timestamp) {
+    public Transaction(UUID senderId, UUID receiverId, double amount, TransactionType transactionType, LocalDate timestamp) {
         this.id = UUID.randomUUID();
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.amount = amount;
-        this.description = description;
+        this.transactionType = transactionType;
         this.timestamp = timestamp;
     }
 
@@ -50,12 +48,12 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String getDescription() {
-        return description;
+    public TransactionType getTransactionType() {
+        return transactionType;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
     }
 
     public LocalDate getTimestamp() {

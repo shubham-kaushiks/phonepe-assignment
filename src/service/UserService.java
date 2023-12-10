@@ -3,7 +3,6 @@ package service;
 import entity.User;
 import repo.UserRepo;
 
-import java.util.Optional;
 import java.util.UUID;
 
 public class UserService {
@@ -14,17 +13,10 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    public boolean registerUser(String name, String email) {
-        try {
-            userRepo.addUser(new User(name, email));
-            return true;
-        } catch (Exception exception) {
-            System.out.println(exception.getMessage());
-            return false;
-        }
+    public User registerUser(String name, String email) throws Exception {
+        User newUser = new User(name, email);
+        userRepo.addUser(newUser);
+        return newUser;
     }
 
-    public User getUserById(UUID id) throws Exception {
-        return userRepo.getUser(id);
-    }
 }

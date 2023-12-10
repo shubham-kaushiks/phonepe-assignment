@@ -1,11 +1,9 @@
 package repo;
 
-import entity.User;
 import entity.Wallet;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 
 public class WalletRepo {
@@ -23,12 +21,12 @@ public class WalletRepo {
         wallets.put(wallet.getId(), wallet);
     }
 
-    public void addWalletForUser(UUID userId, UUID walletId) throws Exception {
-        if (!walletOwners.containsKey(userId)) throw new Exception("User does not exist");
+    public void addWalletOwner(UUID userId, UUID walletId) throws Exception {
+        if (walletOwners.containsKey(userId)) throw new Exception("User already assigned a wallet");
         walletOwners.put(userId, walletId);
     }
 
-    public Wallet getWalletForUser(UUID userId) throws Exception {
+    public Wallet getWalletByOwner(UUID userId) throws Exception {
         if (!walletOwners.containsKey(userId)) throw new Exception("User does not exist");
         return wallets.get(walletOwners.get(userId));
     }

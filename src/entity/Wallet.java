@@ -7,27 +7,17 @@ import java.util.UUID;
 public class Wallet {
 
     private final UUID id;
-    private UUID userId;
     private double finalBalance;
     private List<Transaction> transactions;
 
-    public Wallet(UUID userId, double finalBalance) {
+    public Wallet() {
         this.id = UUID.randomUUID();
-        this.userId = userId;
-        this.finalBalance = finalBalance;
+        this.finalBalance = 0.0;
         this.transactions = new ArrayList<>();
     }
 
     public UUID getId() {
         return id;
-    }
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
     }
 
     public double getFinalBalance() {
